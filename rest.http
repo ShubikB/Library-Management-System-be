@@ -1,0 +1,27 @@
+@port = 5000
+@baseurl = http://localhost:5000/api/v1
+@authEP = {{baseurl}}/auth
+
+POST {{authEP}}/signup
+Content-Type: application/json
+
+{
+  "fName": "Ram",
+  "lName": "Ram",
+  "email": "ram@gmail.com",
+  "password": "password",
+  "phone": "1234567890",
+  "role": "admin",
+  "refreshJwt": "someRefreshToken"
+}
+
+###
+POST {{authEP}}/login
+Content-Type: application/json
+
+{
+  "email" : "ram@gmail.com",
+  "password" : "1234567890"
+}
+
+
