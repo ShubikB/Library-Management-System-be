@@ -6,16 +6,14 @@ export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body
     const userData = await getUserByEmail(email)
-    // console.log(userData)
+
     if (userData) {
       const isLoginSuccess = await compareEncryptText(password, userData.password)
-      console.log(isLoginSuccess)
 
       const tokenData = {
         email: userData.email,
       }
       const token = await JWTsign(tokenData)
-      console.log(token)
 
       if (isLoginSuccess) {
         return res.json({
@@ -28,6 +26,11 @@ export const login = async (req, res, next) => {
           message: "Invalid Credentials",
         })
       }
+    } else {
+      return res.json({
+        status: "Error",
+        message: "User not Found",
+      })
     }
   } catch (error) {
     res.json({
