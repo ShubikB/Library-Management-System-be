@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt"
+import bcrypt from "bcryptjs"
 let SALT_ROUND = 10
 
 export const encryptText = async (inputText) => {

@@ -7,12 +7,10 @@ Content-Type: application/json
 
 {
   "fName": "Ram",
-  "lName": "Ram",
+  "lName": "Singh",
   "email": "ram@gmail.com",
   "password": "password",
   "phone": "1234567890",
-  "role": "admin",
-  "refreshJwt": "someRefreshToken"
 }
 
 ###
@@ -21,7 +19,7 @@ Content-Type: application/json
 
 {
   "email" : "ram@gmail.com",
-  "password" : "1234567890"
+  "password" : "password"
 }
 
 

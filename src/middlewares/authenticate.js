@@ -1,6 +1,9 @@
+import { JWTverify } from "../utils/jwt.js"
+
+
 export const authenticate = async (req, res, next) => {
   try {
-    const token = req.headers.authorization // Fixed typo
+    const token = req.headers.authorization
     const decodedData = await JWTverify(token)
     console.log("Decoded", decodedData)
 
@@ -32,7 +35,7 @@ export const authenticate = async (req, res, next) => {
 }
 
 export const isAdmin = (req, res, next) => {
-  req.user.role === "admin" // Fixed typo
+  req.user.role === "admin" 
     ? res.json({
         status: "Success",
         message: "Admin: True",

@@ -1,4 +1,4 @@
-import { createUser, getUserByEmail } from "../models/users/UserSchema.js"
+import { createUser, getUserByEmail } from "../models/users/userModel.js"
 import { compareEncryptText, encryptText } from "../utils/bcrypt.js"
 import { JWTsign } from "../utils/jwt.js"
 
@@ -6,23 +6,28 @@ export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body
     const userData = await getUserByEmail(email)
+    // console.log(userData)
     if (userData) {
-      await compareEncryptText(password, userData.password)
+      const isLoginSuccess = await compareEncryptText(password, userData.password)
+      console.log(isLoginSuccess)
 
-      const signData = {
-        email,
+      const tokenData = {
+        email: userData.email,
       }
-      const token = JWTsign(signData)
-      userData.password = ""
-      const data = {
-        token,
-        userData,
+      const token = await JWTsign(tokenData)
+      console.log(token)
+
+      if (isLoginSuccess) {
+        return res.json({
+          status: "success",
+          message: "Login Success",
+        })
+      } else {
+        return res.status(401).json({
+          status: "Error",
+          message: "Invalid Credentials",
+        })
       }
-      return res.json({
-        status: "success",
-        message: "Login Successful",
-        data,
-      })
     }
   } catch (error) {
     res.json({

@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import { connectMongodb } from "./src/config/mongoConfig.js"
-import { createUser } from "./src/models/users/UserSchema.js"
+import { createUser } from "./src/models/users/userModel.js"
 import authRouter from "./src/Router/authRouter.js"
 
 const app = express()
@@ -15,11 +15,6 @@ app.get("/", async function (req, res, next) {
 })
 
 app.use("/api/v1/auth", authRouter)
-
-// app.get("/login", async (req, res, next){
-// })
-
-// app.use(errorHandler)
 
 connectMongodb()
   .then(() => {
