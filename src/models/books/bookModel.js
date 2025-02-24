@@ -53,6 +53,6 @@ const bookSchema = new mongoose.Schema(
 
 const Book = mongoose.model("Book", bookSchema)
 
-export const createBook = (bookObj) => {
+export const insertBook = (bookObj) => {
   return new Book(bookObj).save()
 }

@@ -1,16 +1,18 @@
 @port = 5000
 @baseurl = http://localhost:5000/api/v1
 @authEP = {{baseurl}}/auth
+@bookEp ={{baseurl}}/book
 
 POST {{authEP}}/signup
 Content-Type: application/json
 
 {
-  "fName": "Ram",
-  "lName": "Singh",
-  "email": "ram@gmail.com",
+  "fName": "Bob",
+  "lName": "Marley",
+  "email": "bob@gmail.com",
   "password": "password",
   "phone": "1234567890",
+  "role": "admin"
 }
 
 ###
@@ -18,8 +20,25 @@ POST {{authEP}}/login
 Content-Type: application/json
 
 {
-  "email" : "ram@gmail.com",
+  "email" : "bob@gmail.com",
   "password" : "password"
+}
+
+###
+POST {{bookEp}}/createBook
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDAzNTg2ODEsImV4cCI6MTc0MDQ0NTA4MX0.WlEMjDvM75xhtVvBeG3y-3LR0ONzM_f7xbIDpEAGySo
+
+{
+  "status": "active",
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "isbn": "9780743273565",
+  "publishedYear": 1925,
+  "thumbnail": "https://example.com/thumbnail.jpg",
+  "description": "A novel set in the Roaring Twenties.",
+  "isAvailable": "true",
+  "averageRating": 4.5
 }
 
 

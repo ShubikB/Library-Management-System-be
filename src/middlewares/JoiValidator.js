@@ -30,3 +30,21 @@ export const signupValidaor = (schema, req, res, next) => {
 
   joiValidator(signupSchema, req, res, next)
 }
+
+export const createBookValidator = (req, res, next) => {
+  const bookSchema = Joi.object({
+    status: Joi.string().required(),
+    title: Joi.string().required(),
+    author: Joi.string().required(),
+    isbn: Joi.string().required(),
+    publishedYear: Joi.number().required(),
+    thumbnail: Joi.string().required(),
+    description: Joi.string().required(),
+    isAvailable: Joi.boolean(),
+    expectedAvailable: Joi.date().allow(null),
+    averageRating: Joi.number(),
+  })
+
+  joiValidator(bookSchema, req, res, next)
+  console.log("book Validated")
+}

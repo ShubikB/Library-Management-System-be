@@ -3,6 +3,7 @@ import cors from "cors"
 import { connectMongodb } from "./src/config/mongoConfig.js"
 import { createUser } from "./src/models/users/userModel.js"
 import authRouter from "./src/Router/authRouter.js"
+import bookRouter from "./src/Router/bookRouter.js"
 
 const app = express()
 const port = process.env.PORT
@@ -15,6 +16,8 @@ app.get("/", async function (req, res, next) {
 })
 
 app.use("/api/v1/auth", authRouter)
+
+app.use("/api/v1/book", bookRouter)
 
 connectMongodb()
   .then(() => {
