@@ -59,3 +59,4 @@ export const updateUser = (filter, updatedUserObject) => {
 export const deleteuserbyID = (_id) => {
   return User.findOneAndDelete({ _id })
 }
+

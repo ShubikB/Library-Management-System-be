@@ -1,0 +1,56 @@
+@port = 5000
+@baseurl = http://localhost:{{port}}/api/v1
+@bookEp ={{baseurl}}/book
+
+
+###
+POST {{bookEp}}/createBook
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA0NTYxMDUsImV4cCI6MTc0MDU0MjUwNX0.cWcm0bcx-VtqBV-y_UE8SMSylvimuvdB7AV2oH_pmKU
+
+{
+  "status": "active",
+  "title": "The Book2",
+  "author": "The Author",
+  "isbn": "9780765",
+  "publishedYear": 1925,
+  "thumbnail": "https://bookimg.com/thumbnail.jpg",
+  "description": "A Book",
+  "isAvailable": true,
+  "averageRating": 4.5
+}
+
+
+### Get all a books - admin 
+GET {{bookEp}}/adminGetBooks
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA0NTYxMDUsImV4cCI6MTc0MDU0MjUwNX0.cWcm0bcx-VtqBV-y_UE8SMSylvimuvdB7AV2oH_pmKU
+
+### get books for public
+GET {{bookEp}}/publicGetBooks
+
+
+### update the entire book
+PUT {{bookEp}}/updateBook
+Content-Type:application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA0NTYxMDUsImV4cCI6MTc0MDU0MjUwNX0.cWcm0bcx-VtqBV-y_UE8SMSylvimuvdB7AV2oH_pmKU
+ 
+{
+      "_id": "67bbad9baeeb1d2f1145f31c",
+      "status": "active",
+      "title": "book12",
+      "author": "book author",
+      "genre": "autobiography",
+      "isbn": "12346",
+      "publishedYear": 2020,
+      "thumbnail": "https://wallpapercave.com/wp/rdYAno5.jpg",
+      "description": "helloo",
+      "isAvailable": true,
+      "expectedAvailable": null
+    
+      
+    }
+
+###
+DELETE {{bookEp}}deleteBook/67bbad9baeeb1d2f1145f31c
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA0NTYxMDUsImV4cCI6MTc0MDU0MjUwNX0.cWcm0bcx-VtqBV-y_UE8SMSylvimuvdB7AV2oH_pmKU
+

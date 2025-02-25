@@ -1,6 +1,7 @@
 import { createUser, getUserByEmail } from "../models/users/userModel.js"
 import { compareEncryptText, encryptText } from "../utils/bcrypt.js"
-import { JWTsign } from "../utils/jwt.js"
+import { JWTsign, RefreshJWTsign } from "../utils/jwt.js"
+import mongoose from "mongoose"
 
 export const login = async (req, res, next) => {
   try {
@@ -13,13 +14,21 @@ export const login = async (req, res, next) => {
       const tokenData = {
         email: userData.email,
       }
-      const token = await JWTsign(tokenData)
+      const token = JWTsign(tokenData)
+
+      const refreshToken = RefreshJWTsign(tokenData)
+      
 
       if (isLoginSuccess) {
         return res.json({
           status: "success",
           message: "Login Success",
-          token,
+          accessToken: token,
+          refreshToken: refreshToken,
+          user: {
+            _id: userData._id,
+            username: userData.username,
+          },
         })
       } else {
         return res.status(401).json({
@@ -76,5 +85,18 @@ export const getUserDetails = () => {
     status: "Success",
     message: "User Found",
     userData,
+  })
+}
+
+export const renewToken = async (req, res, next) => {
+  const tokenData = {
+    email: req.user.email,
+  }
+  const token = await JWTsign(tokenData)
+
+  return res.status(200).json({
+    status: "success",
+    message: "JWT Renewed",
+    accessToken: token,
   })
 }

@@ -56,3 +56,7 @@ const Book = mongoose.model("Book", bookSchema)
 export const insertBook = (bookObj) => {
   return new Book(bookObj).save()
 }
+
+// export const getAllBooks = (filter) => {
+//   return Book.find(filter)
+// }

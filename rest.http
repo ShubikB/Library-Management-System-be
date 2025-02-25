@@ -1,7 +1,6 @@
 @port = 5000
-@baseurl = http://localhost:5000/api/v1
+@baseurl = http://localhost:{{port}}/api/v1
 @authEP = {{baseurl}}/auth
-@bookEp ={{baseurl}}/book
 
 POST {{authEP}}/signup
 Content-Type: application/json
@@ -24,21 +23,7 @@ Content-Type: application/json
   "password" : "password"
 }
 
+
 ###
-POST {{bookEp}}/createBook
-Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDAzNTg2ODEsImV4cCI6MTc0MDQ0NTA4MX0.WlEMjDvM75xhtVvBeG3y-3LR0ONzM_f7xbIDpEAGySo
-
-{
-  "status": "active",
-  "title": "The Great Gatsby",
-  "author": "F. Scott Fitzgerald",
-  "isbn": "9780743273565",
-  "publishedYear": 1925,
-  "thumbnail": "https://example.com/thumbnail.jpg",
-  "description": "A novel set in the Roaring Twenties.",
-  "isAvailable": "true",
-  "averageRating": 4.5
-}
-
-
+GET {{authEP}}/renewJWT
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA0NTU4NzYsImV4cCI6MTc0MTc1MTg3Nn0.jRGWXXB1XuXq0AyWetFoz4DRevjB-34p9oeUXffi-4A
