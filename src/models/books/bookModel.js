@@ -57,6 +57,14 @@ export const insertBook = (bookObj) => {
   return new Book(bookObj).save()
 }
 
-// export const getAllBooks = (filter) => {
-//   return Book.find(filter)
-// }
+export const getAllBooks = (filter) => {
+  return Book.find(filter)
+}
+
+export const updateBookQuerry = (_id, updateObj) => {
+  return Book.findOneAndUpdate({ _id }, updateObj, { new: true })
+}
+
+export const deleteBookQuerry = (_id) => {
+  return Book.deleteOne(_id)
+}

@@ -5,8 +5,8 @@ import {
   createBook,
   adminGetAllBooks,
   pubGetBooks,
-  updateBookContoller,
-  deleteBookContoller,
+  deleteBook,
+  updateBook,
 } from "../controller/bookcontroller.js"
 import { updateBookValidator } from "../middlewares/JoiValidator.js"
 
@@ -18,8 +18,8 @@ router.get("/adminGetBooks", authenticate, isAdmin, adminGetAllBooks)
 
 router.get("/publicGetBooks", pubGetBooks)
 
-router.put("/updateBook", authenticate, isAdmin, updateBookValidator, updateBookContoller)
+router.put("/updateBook", authenticate, isAdmin, updateBookValidator, updateBook)
 
-router.delete("deleteBook/:_id", authenticate, isAdmin, deleteBookContoller)
+router.delete("/deleteBook/:_id", authenticate, isAdmin, deleteBook)
 
 export default router

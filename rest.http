@@ -2,6 +2,7 @@
 @baseurl = http://localhost:{{port}}/api/v1
 @authEP = {{baseurl}}/auth
 
+#Signup
 POST {{authEP}}/signup
 Content-Type: application/json
 
@@ -14,6 +15,7 @@ Content-Type: application/json
   "role": "admin"
 }
 
+#Login
 ###
 POST {{authEP}}/login
 Content-Type: application/json
@@ -24,6 +26,7 @@ Content-Type: application/json
 }
 
 
+#Renew JWT
 ###
 GET {{authEP}}/renewJWT
 Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA0NTU4NzYsImV4cCI6MTc0MTc1MTg3Nn0.jRGWXXB1XuXq0AyWetFoz4DRevjB-34p9oeUXffi-4A

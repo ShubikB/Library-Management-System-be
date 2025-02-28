@@ -2,17 +2,17 @@
 @baseurl = http://localhost:{{port}}/api/v1
 @bookEp ={{baseurl}}/book
 
-
+#Create a Book
 ###
 POST {{bookEp}}/createBook
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA0NTYxMDUsImV4cCI6MTc0MDU0MjUwNX0.cWcm0bcx-VtqBV-y_UE8SMSylvimuvdB7AV2oH_pmKU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA3MDgwMzAsImV4cCI6MTc0MDc5NDQzMH0.2E5qlbZ5xXik7lrR0ZZPn6X8BBRC-dghO8FLTDwqj9A
 
 {
-  "status": "active",
-  "title": "The Book2",
+  "status": "inactive",
+  "title": "The book book",
   "author": "The Author",
-  "isbn": "9780765",
+  "isbn": "9780786",
   "publishedYear": 1925,
   "thumbnail": "https://bookimg.com/thumbnail.jpg",
   "description": "A Book",
@@ -21,26 +21,28 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5j
 }
 
 
-### Get all a books - admin 
+# Get all Books (Admin)
+###
 GET {{bookEp}}/adminGetBooks
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA0NTYxMDUsImV4cCI6MTc0MDU0MjUwNX0.cWcm0bcx-VtqBV-y_UE8SMSylvimuvdB7AV2oH_pmKU
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA3MDgwMzAsImV4cCI6MTc0MDc5NDQzMH0.2E5qlbZ5xXik7lrR0ZZPn6X8BBRC-dghO8FLTDwqj9A
 
-### get books for public
+# Get all Books (public)
+###
 GET {{bookEp}}/publicGetBooks
 
-
-### update the entire book
+#Update a Book
+###
 PUT {{bookEp}}/updateBook
 Content-Type:application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA0NTYxMDUsImV4cCI6MTc0MDU0MjUwNX0.cWcm0bcx-VtqBV-y_UE8SMSylvimuvdB7AV2oH_pmKU
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA3MDgwMzAsImV4cCI6MTc0MDc5NDQzMH0.2E5qlbZ5xXik7lrR0ZZPn6X8BBRC-dghO8FLTDwqj9A
  
 {
-      "_id": "67bbad9baeeb1d2f1145f31c",
-      "status": "active",
-      "title": "book12",
-      "author": "book author",
+      "_id": "67bbcc6572031b68f14c01a6",
+      "status": "inactive",
+      "title": "book",
+      "author": "book writer",
       "genre": "autobiography",
-      "isbn": "12346",
+      "isbn": "12370456",
       "publishedYear": 2020,
       "thumbnail": "https://wallpapercave.com/wp/rdYAno5.jpg",
       "description": "helloo",
@@ -50,7 +52,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5j
       
     }
 
+# Delete a Book
 ###
-DELETE {{bookEp}}deleteBook/67bbad9baeeb1d2f1145f31c
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA0NTYxMDUsImV4cCI6MTc0MDU0MjUwNX0.cWcm0bcx-VtqBV-y_UE8SMSylvimuvdB7AV2oH_pmKU
+DELETE {{bookEp}}/deleteBook/67bd4147ba4f86de48043c01
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA3MDgwMzAsImV4cCI6MTc0MDc5NDQzMH0.2E5qlbZ5xXik7lrR0ZZPn6X8BBRC-dghO8FLTDwqj9b
 

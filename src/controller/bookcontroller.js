@@ -1,4 +1,9 @@
-import { insertBook } from "../models/books/bookModel.js"
+import {
+  insertBook,
+  getAllBooks,
+  updateBookQuerry,
+  deleteBookQuerry,
+} from "../models/books/bookModel.js"
 
 export const createBook = async (req, res, next) => {
   try {
@@ -62,14 +67,15 @@ export const pubGetBooks = async (req, res, next) => {
   }
 }
 
-export const updateBookContoller = async (req, res, next) => {
+export const updateBook = async (req, res, next) => {
   try {
-    // get  the book
-    const book = await updateBook(req.body)
-    book?._id
+    const { _id, ...updateObj } = req.body
+    const book = await updateBookQuerry(_id, updateObj)
+    book
       ? res.json({
           status: "success",
           message: "Book updated",
+          book,
         })
       : next({
           status: 400,
@@ -78,21 +84,20 @@ export const updateBookContoller = async (req, res, next) => {
   } catch (error) {
     next({
       status: 500,
-      message: "Error creating book",
+      message: "Error updating book",
     })
   }
 }
-export const deleteBookContoller = async (req, res, next) => {
+
+export const deleteBook = async (req, res, next) => {
   try {
-    // get  the book
     const _id = req.params._id
+    const result = await deleteBookQuerry({ _id })
 
-    const deletedBook = await deleteBook(_id)
-
-    deletedBook?._id
+    result
       ? res.json({
           status: "success",
-          message: "Book delted sucessfully",
+          message: "Book deleted successfully",
         })
       : next({
           status: 400,
