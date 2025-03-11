@@ -5,6 +5,7 @@ import {
   createBook,
   adminGetAllBooks,
   pubGetBooks,
+  getFeaturedBooks,
   deleteBook,
   updateBook,
 } from "../controller/bookcontroller.js"
@@ -15,6 +16,8 @@ const router = express.Router()
 router.post("/createBook", authenticate, isAdmin, createBookValidator, createBook)
 
 router.get("/adminGetBooks", authenticate, isAdmin, adminGetAllBooks)
+
+router.get("/featuredBooks", getFeaturedBooks)
 
 router.get("/publicGetBooks", pubGetBooks)
 

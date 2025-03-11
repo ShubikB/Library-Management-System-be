@@ -62,29 +62,58 @@ export const pubGetBooks = async (req, res, next) => {
   } catch (error) {
     next({
       status: 500,
-      message: "Error creating book",
+      message: "Error getting book",
+    })
+  }
+}
+
+export const getFeaturedBooks = async (req, res, next) => {
+  try {
+    const books = await getAllBooks({
+      isFeatured: "true",
+    })
+
+    res.json({
+      status: "success",
+      message: "Books list",
+      books,
+    })
+  } catch (error) {
+    next({
+      status: 500,
+      message: "Error getting book",
     })
   }
 }
 
 export const updateBook = async (req, res, next) => {
   try {
-    const { _id, ...updateObj } = req.body
-    const book = await updateBookQuerry(_id, updateObj)
-    book
-      ? res.json({
-          status: "success",
-          message: "Book updated",
-          book,
-        })
-      : next({
-          status: 400,
-          message: "Book cannot be updated!",
-        })
+    const { _id, ...updateFields } = req.body 
+
+    if (!_id) {
+      return res.status(400).json({ status: "error", message: "Book ID is required" })
+    }
+
+    const updatedBook = await updateBookQuerry(_id, updateFields)
+
+    if (updatedBook) {
+      res.json({
+        status: "success",
+        message: "Book updated",
+        book: updatedBook,
+      })
+    } else {
+      res.status(404).json({
+        status: "error",
+        message: "Book not found or could not be updated",
+      })
+    }
   } catch (error) {
-    next({
-      status: 500,
+    console.error("Error updating book:", error) 
+    res.status(500).json({
+      status: "error",
       message: "Error updating book",
+      error: error.message,
     })
   }
 }

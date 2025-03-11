@@ -35,7 +35,9 @@ export const createBookValidator = (req, res, next) => {
   const bookSchema = Joi.object({
     status: Joi.string().required(),
     title: Joi.string().required(),
+    isFeatured: Joi.boolean().required(),
     author: Joi.string().required(),
+    genre: Joi.string().required(),
     isbn: Joi.string().required(),
     publishedYear: Joi.number().required(),
     thumbnail: Joi.string().required(),
@@ -62,7 +64,11 @@ export const updateBookValidator = (req, res, next) => {
     description: Joi.string(),
     isAvailable: Joi.boolean(),
     expectedAvailable: Joi.string().allow("", null),
+    genre: Joi.string().valid("academic", "fiction", "non-fiction", "others"),
+    isFeatured: Joi.boolean(),
   })
 
   joiValidator(updateBookSchema, req, res, next)
 }
+
+// TODO change the status to IsAvailable

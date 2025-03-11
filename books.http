@@ -6,25 +6,33 @@
 ###
 POST {{bookEp}}/createBook
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA3MDgwMzAsImV4cCI6MTc0MDc5NDQzMH0.2E5qlbZ5xXik7lrR0ZZPn6X8BBRC-dghO8FLTDwqj9A
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDE2MDU3MTQsImV4cCI6MTc0MTY5MjExNH0.O_U3FsF_pat5APQB2LipjrpR5gSAhqG1X17zHLVoQwI
 
 {
-  "status": "inactive",
-  "title": "The book book",
-  "author": "The Author",
-  "isbn": "9780786",
-  "publishedYear": 1925,
-  "thumbnail": "https://bookimg.com/thumbnail.jpg",
-  "description": "A Book",
+  "status": "active",
+  "title": "The Hitchhiker's Guide to the Galaxy",
+  "author": "Douglas Adams",
+  "genre": "fiction",
+  "isbn": "978-0345391803",
+  "publishedYear": 1979,
+  "thumbnail": "https://edit.org/images/cat/book-covers-big-2019101610.jpg",
+  "description": "A comedic science fiction series created by Douglas Adams that has become a popular culture phenomenon.",
   "isAvailable": true,
-  "averageRating": 4.5
+  "isFeatured": true
 }
+
 
 
 # Get all Books (Admin)
 ###
 GET {{bookEp}}/adminGetBooks
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA3MDgwMzAsImV4cCI6MTc0MDc5NDQzMH0.2E5qlbZ5xXik7lrR0ZZPn6X8BBRC-dghO8FLTDwqj9A
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDE2NDYzNTEsImV4cCI6MTc0MTczMjc1MX0.RBbcnJQP14OgCTq6x0wl9eCWYq1xrAfMPcp0ojU1FKw
+
+
+# Get Featured Books
+###
+GET {{bookEp}}/featuredBooks
+
 
 # Get all Books (public)
 ###
@@ -34,23 +42,22 @@ GET {{bookEp}}/publicGetBooks
 ###
 PUT {{bookEp}}/updateBook
 Content-Type:application/json
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA3MDgwMzAsImV4cCI6MTc0MDc5NDQzMH0.2E5qlbZ5xXik7lrR0ZZPn6X8BBRC-dghO8FLTDwqj9A
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDE2NDYzNTEsImV4cCI6MTc0MTczMjc1MX0.RBbcnJQP14OgCTq6x0wl9eCWYq1xrAfMPcp0ojU1FKw
  
 {
-      "_id": "67bbcc6572031b68f14c01a6",
-      "status": "inactive",
-      "title": "book",
-      "author": "book writer",
-      "genre": "autobiography",
-      "isbn": "12370456",
-      "publishedYear": 2020,
-      "thumbnail": "https://wallpapercave.com/wp/rdYAno5.jpg",
-      "description": "helloo",
-      "isAvailable": true,
-      "expectedAvailable": null
-    
-      
-    }
+  "_id": "67bd4147ba4f86de48043c01",
+  "title": "The Adventures of Dummy",
+  "author": "John Doe",
+  "isbn": "97834567890",
+  "publishedYear": 2023,
+  "thumbnail": "https://example.com/dummy-book.jpg",
+  "status": "active",
+  "genre": "fiction",
+  "description": "A thrilling tale of a dummy's journey.",
+  "isAvailable": true,
+  "expectedAvailable": null,
+  "isFeatured": true
+  }
 
 # Delete a Book
 ###

@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 
+// TODO change the status to IsAvailable
 const bookSchema = new mongoose.Schema(
   {
     status: {
@@ -10,6 +11,11 @@ const bookSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
+    },
+    genre: {
+      type: String,
+      enum: ["academic", "fiction", "non-fiction", "others"],
+      default: "others",
     },
     author: {
       type: String,
@@ -45,6 +51,10 @@ const bookSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    isFeatured: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
@@ -62,7 +72,8 @@ export const getAllBooks = (filter) => {
 }
 
 export const updateBookQuerry = (_id, updateObj) => {
-  return Book.findOneAndUpdate({ _id }, updateObj, { new: true })
+  console.log(updateObj)
+  return Book.findByIdAndUpdate(_id, updateObj, { new: true })
 }
 
 export const deleteBookQuerry = (_id) => {
