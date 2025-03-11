@@ -45,22 +45,11 @@ Content-Type:application/json
 Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDE2NDYzNTEsImV4cCI6MTc0MTczMjc1MX0.RBbcnJQP14OgCTq6x0wl9eCWYq1xrAfMPcp0ojU1FKw
  
 {
-  "_id": "67bd4147ba4f86de48043c01",
-  "title": "The Adventures of Dummy",
-  "author": "John Doe",
-  "isbn": "97834567890",
-  "publishedYear": 2023,
-  "thumbnail": "https://example.com/dummy-book.jpg",
-  "status": "active",
-  "genre": "fiction",
-  "description": "A thrilling tale of a dummy's journey.",
-  "isAvailable": true,
-  "expectedAvailable": null,
-  "isFeatured": true
+  "_id": "67cf80702da998511e4e810c",
+  "thumbnail": "https://as1.ftcdn.net/v2/jpg/04/32/30/30/1000_F_432303031_ysOUhColEZEl8eSZkSUOFNqOiN1W6x2u.jpg"
   }
 
 # Delete a Book
 ###
-DELETE {{bookEp}}/deleteBook/67bd4147ba4f86de48043c01
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDA3MDgwMzAsImV4cCI6MTc0MDc5NDQzMH0.2E5qlbZ5xXik7lrR0ZZPn6X8BBRC-dghO8FLTDwqj9b
-
+DELETE {{bookEp}}/deleteBook/67bcecbb21a5a85aa2c3be2a
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBnbWFpbC5jb20iLCJpYXQiOjE3NDE2MDU3MTQsImV4cCI6MTc0MTY5MjExNH0.O_U3FsF_pat5APQB2LipjrpR5gSAhqG1X17zHLVoQwI

@@ -53,14 +53,14 @@ export const createBookValidator = (req, res, next) => {
 
 export const updateBookValidator = (req, res, next) => {
   const updateBookSchema = Joi.object({
-    title: Joi.string().required(),
+    title: Joi.string(),
     _id: Joi.string().required(),
-    author: Joi.string().required(),
-    status: Joi.string().required(),
-    thumbnail: Joi.string().required(),
-    isbn: Joi.string().required(),
-    genre: Joi.string().required(),
-    publishedYear: Joi.number().required(),
+    author: Joi.string(),
+    status: Joi.string(),
+    thumbnail: Joi.string(),
+    isbn: Joi.string(),
+    genre: Joi.string(),
+    publishedYear: Joi.number(),
     description: Joi.string(),
     isAvailable: Joi.boolean(),
     expectedAvailable: Joi.string().allow("", null),
